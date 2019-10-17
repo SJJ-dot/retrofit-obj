@@ -1,0 +1,2 @@
+include ':app', ':retrofitlib'
+rootProject.name='RetrofitObj'
