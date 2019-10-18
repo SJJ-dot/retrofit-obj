@@ -1,10 +1,10 @@
-package com.sjianjun.retrolib.converter
+package com.sjianjun.retrofitlib.converter
 
 import com.google.gson.Gson
 import com.google.gson.JsonArray
 import com.google.gson.JsonElement
 import com.google.gson.JsonObject
-import com.sjianjun.retrolib.Obj
+import com.sjianjun.retrofitlib.Obj
 import okhttp3.*
 import retrofit2.Converter
 import retrofit2.Retrofit
@@ -120,7 +120,6 @@ open class ObjBodyConverterFactory(private val gson: Gson) : Converter.Factory()
     class ObjConverterInterceptor : Interceptor {
         override fun intercept(chain: Interceptor.Chain): Response {
             var request = chain.request()
-
             if (request.method() == "GET") {
                 val parameter = request.url().queryParameter(PLACEHOLDER)
                 if (parameter != null) {

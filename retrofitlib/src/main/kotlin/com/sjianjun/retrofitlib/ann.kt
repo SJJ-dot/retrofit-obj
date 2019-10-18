@@ -1,4 +1,4 @@
-package com.sjianjun.retrolib
+package com.sjianjun.retrofitlib
 
 /**
  * 将添加此注解的对象转化为form表单形式提交
