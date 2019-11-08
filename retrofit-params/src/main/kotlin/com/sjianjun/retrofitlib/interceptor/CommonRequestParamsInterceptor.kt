@@ -6,19 +6,16 @@ import okhttp3.*
  * 向所有的get post(表单)网络请求添加通用参数。
  * 如果已经有的基础参数不会再次添加避免覆盖，重复
  */
-open class CommonRequestParamsInterceptor(private val baseParams: (originParams: MutableMap<String, String>) -> MutableMap<String, String> = { mutableMapOf() }) :
+open class CommonRequestParamsInterceptor(private val baseParams: (request: Request, originParams: MutableMap<String, String>) -> MutableMap<String, String> = {_,_-> mutableMapOf() }) :
     Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         var request = chain.request()
         if (request.method() == "GET") {
-            val url = request.url()
             //构造新的请求
-            request = request.newBuilder().url(baseRequestParams(url)).build()
+            request = request.newBuilder().url(baseParamsGet(request)).build()
 
         } else if (request.method() == "POST") {
-            val body = request.body()
-
-                request = request.newBuilder().post(baseRequestParams(body)).build()
+            request = request.newBuilder().post(baseParamsPost(request)).build()
 
         }
         return chain.proceed(request)
@@ -27,17 +24,21 @@ open class CommonRequestParamsInterceptor(private val baseParams: (originParams:
     /**
      * GET参数
      */
-    open fun baseRequestParams(url: HttpUrl): HttpUrl {
+    open fun baseParamsGet(request: Request): HttpUrl {
+        val url = request.url()
         val originParams = mutableMapOf<String, String>()
+
+        val urlBuilder = url.newBuilder()
 
         for (i in 0 until url.querySize()) {
             originParams[url.queryParameterName(i)] = url.queryParameterValue(i)
+            //将参数移除
+            urlBuilder.removeAllQueryParameters(url.queryParameterName(i))
         }
 
-        val map = baseParams(originParams)
+        val map = baseParams(request, originParams)
 
-        //添加不足的通用参数
-        val urlBuilder = url.newBuilder()
+        //重新添加参数
         map.forEach { entry ->
             urlBuilder.setQueryParameter(entry.key, entry.value)
         }
@@ -47,10 +48,10 @@ open class CommonRequestParamsInterceptor(private val baseParams: (originParams:
     /**
      * POST参数
      */
-    open fun baseRequestParams(body: RequestBody?): RequestBody {
-
+    open fun baseParamsPost(request: Request): RequestBody {
+        val body = request.body()
         if (body != null && body !is FormBody) {
-                return body
+            return body
         } else {
             val originParams = mutableMapOf<String, String>()
             if (body is FormBody) {
@@ -59,7 +60,7 @@ open class CommonRequestParamsInterceptor(private val baseParams: (originParams:
                 }
             }
 
-            val map = baseParams(originParams)
+            val map = baseParams(request, originParams)
 
             val formBody = FormBody.Builder()
 

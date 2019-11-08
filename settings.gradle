@@ -1,2 +1,2 @@
-include ':app', ':retrofitlib'
+include ':app', ':retrofit-params'
 rootProject.name='RetrofitObj'

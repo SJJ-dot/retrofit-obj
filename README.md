@@ -1,22 +1,31 @@
-package com.sjianjun.app
-
-import android.support.v7.app.AppCompatActivity
-import android.os.Bundle
-import com.sjianjun.retrofitlib.Obj
-import com.sjianjun.retrofitlib.converter.ObjBodyConverterFactory
-import com.sjianjun.retrofitlib.interceptor.CommonRequestParamsInterceptor
-import com.sjianjun.scheduler.CoroutineScheduler
-import io.reactivex.Observable
-import kotlinx.android.synthetic.main.activity_main.*
-import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
-import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
-import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.converter.scalars.ScalarsConverterFactory
-import retrofit2.http.*
-import sjj.alog.Log
-
+# retrofit-params
+- 支持将对象转换为get 参数，post表单参数或者JSON（支持扩展其他类型）
+- 通用参数添加。
+### 使用
+- 项目根目录build.gradle添加存储库
+```groovy
+allprojects {
+    repositories {
+        ...
+        maven {
+            url "https://raw.githubusercontent.com/lTBeL/repo/master/repository"
+        }
+    }
+}
+```
+- 使用的module添加依赖
+```groovy
+dependencies {
+    ...
+    implementation 'com.sjianjun:retrofit-params:0.0.1'
+    //。。。
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'com.squareup.retrofit2:retrofit:2.6.1'
+    implementation 'com.google.code.gson:gson:2.8.6'
+}
+```
+- 代码中
+```
 class MainActivity : AppCompatActivity() {
 
 
@@ -106,3 +115,5 @@ class MainActivity : AppCompatActivity() {
 
 
 }
+
+```

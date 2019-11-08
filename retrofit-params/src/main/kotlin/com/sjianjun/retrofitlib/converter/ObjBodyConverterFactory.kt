@@ -117,6 +117,9 @@ open class ObjBodyConverterFactory(private val gson: Gson) : Converter.Factory()
         }
     }
 
+    /**
+     * 将前期通过占位符添加的参数 移除。展开真实的参数到请求中
+     */
     class ObjConverterInterceptor : Interceptor {
         override fun intercept(chain: Interceptor.Chain): Response {
             var request = chain.request()
