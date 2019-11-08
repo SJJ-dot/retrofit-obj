@@ -117,3 +117,5 @@ class MainActivity : AppCompatActivity() {
 }
 
 ```
+
+[simple use](https://github.com/lTBeL/retrofit-obj/blob/master/app/src/main/java/com/sjianjun/app/MainActivity.kt)
