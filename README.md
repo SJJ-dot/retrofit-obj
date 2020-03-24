@@ -8,7 +8,7 @@ allprojects {
     repositories {
         ...
         maven {
-            url "https://raw.githubusercontent.com/lTBeL/repo/master/repository"
+            url "https://raw.githubusercontent.com/SJJ-dot/repo/master/repository"
         }
     }
 }
