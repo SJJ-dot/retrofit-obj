@@ -38,10 +38,11 @@ dependencies {
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
     implementation 'com.google.code.gson:gson:2.8.6'
     implementation 'com.squareup.retrofit2:retrofit:2.6.1'
-    implementation 'com.sjianjun:aLog:1.2.2'
+    implementation 'com.github.SJJ-dot:ALOG:1.2.9'
     implementation "io.reactivex.rxjava2:rxjava:2.2.13"
 //    implementation project(':retrofit-params')
-    implementation 'com.sjianjun:retrofit-params:0.0.1'
-    implementation('com.sjianjun:scheduler:0.0.4')
+//    implementation 'com.sjianjun:retrofit-params:0.0.1'
+    implementation 'com.github.SJJ-dot:retrofit-obj:0.0.1'
+//    implementation('com.sjianjun:scheduler:0.0.4')
 
 }

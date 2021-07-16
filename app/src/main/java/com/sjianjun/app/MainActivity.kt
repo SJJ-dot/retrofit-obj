@@ -5,7 +5,6 @@ import android.os.Bundle
 import com.sjianjun.retrofitlib.Obj
 import com.sjianjun.retrofitlib.converter.ObjBodyConverterFactory
 import com.sjianjun.retrofitlib.interceptor.CommonRequestParamsInterceptor
-import com.sjianjun.scheduler.CoroutineScheduler
 import io.reactivex.Observable
 import kotlinx.android.synthetic.main.activity_main.*
 import okhttp3.OkHttpClient
@@ -47,7 +46,7 @@ class MainActivity : AppCompatActivity() {
             .addConverterFactory(ObjBodyConverterFactory.create())
             .addConverterFactory(ScalarsConverterFactory.create())
             .addConverterFactory(GsonConverterFactory.create())
-            .addCallAdapterFactory(RxJava2CallAdapterFactory.createWithScheduler(CoroutineScheduler.IO))
+            .addCallAdapterFactory(RxJava2CallAdapterFactory.createAsync())
             .build().create(TestInterface::class.java)
 
     override fun onCreate(savedInstanceState: Bundle?) {

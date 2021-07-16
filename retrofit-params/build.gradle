@@ -2,9 +2,9 @@ apply plugin: 'kotlin'
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    compileOnly "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    compileOnly "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     compileOnly 'com.google.code.gson:gson:2.8.6'
-    compileOnly 'com.squareup.retrofit2:retrofit:2.6.1'
+    compileOnly 'com.squareup.retrofit2:retrofit:2.9.0'
 }
 
 sourceCompatibility = "7"

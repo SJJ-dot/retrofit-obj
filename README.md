@@ -1,28 +1,22 @@
+[![](https://jitpack.io/v/SJJ-dot/retrofit-obj.svg)](https://jitpack.io/#SJJ-dot/retrofit-obj)
 # retrofit-params
 - 支持将对象转换为get 参数，post表单参数或者JSON（支持扩展其他类型）
 - 通用参数添加。
 ### 使用
 - 项目根目录build.gradle添加存储库
 ```groovy
-allprojects {
-    repositories {
-        ...
-        maven {
-            url "https://raw.githubusercontent.com/SJJ-dot/repo/master/repository"
-        }
-    }
-}
+	allprojects {
+		repositories {
+			...
+			maven { url 'https://jitpack.io' }
+		}
+	}
 ```
 - 使用的module添加依赖
 ```groovy
-dependencies {
-    ...
-    implementation 'com.sjianjun:retrofit-params:0.0.1'
-    //。。。
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'com.squareup.retrofit2:retrofit:2.6.1'
-    implementation 'com.google.code.gson:gson:2.8.6'
-}
+	dependencies {
+	        implementation 'com.github.SJJ-dot:retrofit-obj:xxx'
+	}
 ```
 - 代码中
 ```
